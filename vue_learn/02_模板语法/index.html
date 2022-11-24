@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h1>指令语法</h1>
+        <!-- 
+            添加v-bind之后，变成一个获取（可动态确定）地址表达式而不是字符串
+            v-bind：可以简写成 ：
+            1 插值语法： 用于解析标签体的内容
+            2 指令语法： 用于解析标签（dom元素）
+        -->
+        <h2>gnjw {{name}}</h2>
+        <a :href="ringo.url">点我去{{ringo.name}}网站</a>
+    </div>
+
+</body>
+<script>
+    Vue.config.productionTip = false //阻止启动生成 生产提示
+
+    new Vue({
+        el: '#root',
+        data: {
+            name: 'ringo',
+            ringo: {
+                name: 'apple',
+                url: 'http://www.baidu.com',
+            }
+        }
+    })
+</script>
+
+</html>

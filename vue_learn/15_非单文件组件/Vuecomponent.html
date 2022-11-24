@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <button @click="show">click me</button>
+        <black-cat></black-cat>
+    </div>
+
+    <script>
+        //vc是一个全新的VueComponent构造函数 组件 
+        // 其中data采用函数式返回，可复用性的同时保证了独立性
+
+        const vc = Vue.extend({
+            template: `
+            <div>
+                <h3>学校名称：{{name}}</h3>
+                <h3>学校地址：{{address}}</h3>
+                <button @click="showInfo">click me</button>
+            </div>
+        `,
+            data() {
+                return {
+                    name: '黑猫堂',
+                    address: "Tokoy"
+                }
+            },
+            methods: {
+                showInfo() {
+                    console.log(this);
+                }
+            },
+        })
+
+        const vc2 = Vue.extend({});
+
+        //vm是Vue的实例对象 vc没有el配置项
+        const vm = new Vue({
+            el: "#root",
+            data: {
+                a: 1,
+            },
+            components: {
+                'black-cat': vc,
+            },
+            methods: {
+                show() {
+                    console.log(this);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--
+        引用vue这个构造函数
+        本机向5500端口服务器（liveserver打开时内创的）要页签图标 并且把当前文件夹的内容当作根资源去使用
+    -->
+    <script src="../js/vue.js"></script>
+</head>
+
+
+
+
+<body>
+    <!-- 容器 -->
+    <div id="root">
+        <h1>
+            hello，{{name}}
+        </h1>
+    </div>
+
+    <!-- el先找到容器 容器模板拿到vue对象上进行解析 解析完成返回一个正常html返回执行 -->
+    <!-- 容器和vue实例一一对应 -->
+    <!-- {{x}}中的x要写js表达式（得到一个结果，可以赋给一个变量），且x可以自动读取data中的所有属性，data改变页面数据自动更新 -->
+    <script>
+        Vue.config.productionTip = false;
+        // vue实例 传入一个配置对象 
+        new Vue({
+            // 添加配置 el用于指定当前vue实例为哪个容器服务
+            el: '#root',
+            data: {
+                //data用于存储数据
+                name: 'ringo'
+            }
+
+        })
+    </script>
+
+</body>
+
+</html>

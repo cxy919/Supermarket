@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>套娃中</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+
+<body>
+    <div id="root">
+    </div>
+</body>
+
+<script>
+    const member = {
+        template: `
+            <div>
+                <h3>姓名：{{name}}</h3>
+                <h3>性别：{{sex}}</h3>
+            </div>
+        `,
+        data() {
+            return {
+                name: 'sheena ringo',
+                sex: 'female'
+            }
+        }
+    }
+
+    const school = {
+        template: `
+            <div>
+                <h3>学校名称：{{name}}</h3>
+                <h3>学校地址：{{address}}</h3>
+                <member></member>
+            </div>
+        `,
+        data() {
+            return {
+                name: '黑猫堂',
+                address: "Tokoy"
+            }
+        },
+        components: {
+            member
+        }
+    }
+
+    const hello = {
+        template: `
+                <h2>{{hyy}}</h2>
+            `,
+        data() {
+            return {
+                hyy: "welcome!",
+            }
+
+        }
+    }
+
+    const app = {
+        template: `
+                <div>
+                    <hello></hello> 
+                    <school></school>   
+                </div>
+            `,
+        components: {
+            hello,
+            school
+        }
+    }
+
+    new Vue({
+        template: `
+                <app></app>
+            `,
+        el: "#root",
+        components: {
+            app
+        }
+    })
+</script>
+</body>
+
+</html>

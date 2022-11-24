@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <button @click.once="add">
+            add
+        </button>
+        <!-- 虚拟dom对比算法 更新迭代时找到对应的key 如果容器内元素相同则复用 如果不同则更新 -->
+        <ul>
+            <li v-for="(p, index) of Persons" :key="index">
+                {{p.name}}--{{p.age}}--{{index}}
+                <input type="text">
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: "#root",
+        data: {
+            Persons: [{
+                id: '001',
+                name: 'cxy',
+                age: 21
+            }, {
+                id: '002',
+                name: 'ldm',
+                age: 20
+            }, ]
+        },
+        methods: {
+            add() {
+                const p = {
+                    id: '003',
+                    name: 'rxa',
+                    age: '20'
+                };
+                this.Persons.unshift(p);
+            }
+        },
+    })
+</script>
+
+</html>

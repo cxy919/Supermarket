@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        姓<input type="text" v-model="firstName"><br/> 名
+        <input type="text" v-model="lastName"><br/> 全名
+        <span>{{fullName}}</span>
+    </div>
+</body>
+
+<script>
+    const vm = new Vue({
+        el: "#root",
+        data: {
+            firstName: 'sheena',
+            lastName: 'ringo',
+            // fullName: 'sheenaringo'
+        },
+        // 监视属性变化 不需要深度监视等功能 用简写
+        // 总则 计算属性好用 但侦听能完成异步操作 
+        // watch: {
+        //     firstName(val) {
+        //         setTimeout(() => {
+        //             this.fullName = val + this.lastName;
+        //         }, 2000)
+        //     },
+        //     lastName(val) {
+        //         this.fullName = this.firstName + val;
+        //     }
+        // },
+        //只需要getter时简写
+        computed: {
+            fullName() {
+                return this.firstName + this.lastName
+            }
+        }
+    })
+</script>
+
+</html>
